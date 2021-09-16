@@ -33,7 +33,7 @@ gibi  yanlış algıladığı için bazı apiler doğru çalışmıyor olabilir.
 doğru çalıştığını göreceksiniz. Bunun için gerekli url'leri aşağıda sıralayacağım.
 
 ## EndPoints
-# POST
+### POST
 - http://127.0.0.1:8000/api/register		
 /*kullanıcı kaydı için aşağıdaki formatı takip edin*/
 {
@@ -59,7 +59,7 @@ doğru çalıştığını göreceksiniz. Bunun için gerekli url'leri aşağıda
 	"address": "",
 	"shippingDate": "2021-12-12 18:08:05"	/*postmande çalışan swaggerda çalışmayan date formatı*/
 }
-# GET
+### GET
 
 - http://127.0.0.1:8000/api/user		/*tüm kullanıcıları gösterir*/
 
@@ -71,7 +71,7 @@ doğru çalıştığını göreceksiniz. Bunun için gerekli url'leri aşağıda
 
 - http://127.0.0.1:8000/api/deleteProduct/?	/*soru işareti yerine yazdığınız id'yi siler*/
 
-#PUT 
+### PUT 
 - http://127.0.0.1:8000/api/updateProduct/?	
 /*soru işareti yerine yazdığınız idli product güncellemek için aşağıdaki formatı takip 
 edin shippingDate geçmediyse güncelleme yapmayacaktır */
