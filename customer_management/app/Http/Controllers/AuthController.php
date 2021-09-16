@@ -19,6 +19,47 @@ class AuthController extends Controller
         ]);
 
     }
+     /**
+     * @OA\Post(
+     ** path="/api/register",
+     *   tags={"Register"},
+     *   summary="Register",
+     *   operationId="register",
+     *
+     *  @OA\Parameter(
+     *      name="name",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *           type="string"
+     *      )
+     *   ),
+     *  @OA\Parameter(
+     *      name="email",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *           type="string"
+     *      )
+     *   ),
+     *   @OA\Parameter(
+     *      name="password",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *           type="string"
+     *      )
+     *   ),
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *)
+     **/
+
 
     public function login(Request $request)
     {
@@ -38,11 +79,61 @@ class AuthController extends Controller
             'token' => $token
         ])->withCookie($cookie);
     }
+     /**
+     * @OA\Post(
+     ** path="/api/login",
+     *   tags={"login"},
+     *   summary="Login",
+     *   operationId="login",
+     *
+     *  @OA\Parameter(
+     *      name="email",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *           type="string"
+     *      )
+     *   ),
+     *   @OA\Parameter(
+     *      name="password",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *           type="string"
+     *      )
+     *   ),
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     *      @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *   ),
+     *)
+     **/
+
 
     public function user()
     {
-        return Auth::user(); 
+        return User::all(); 
     }
+
+      /**
+     * @OA\Get(
+     * path="/api/user",
+     * summary="user",
+     * description="user",
+     * operationId="user",
+     * tags={"user"},
+     * @OA\Response(
+     *    response=200,
+     *    description="Success",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="All Products")
+     *        )
+     *     )
+     * )
+     */
 
     public function logout()
     {
@@ -52,5 +143,23 @@ class AuthController extends Controller
             'message' => 'Success'
         ])->withCookie($cookie);
     }
+    /**
+     * @OA\Post(
+     ** path="/api/logout",
+     *   tags={"logout"},
+     *   summary="logout",
+     *   operationId="logout",
+     *
+     *   @OA\Response(
+     *      response=200,
+     *       description="Success",
+     * @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="logout")
+     *        )
+     *     )
+     *   ),
+     *)
+     **/
+    
 
 }

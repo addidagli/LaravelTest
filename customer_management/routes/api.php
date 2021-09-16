@@ -25,7 +25,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', [\App\Http\Controllers\AuthController::class, 'user']);
     Route::post('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
 });
-
+Route::get('user', [\App\Http\Controllers\AuthController::class, 'user']);
+Route::post('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
 
 Route::post('addProduct', [\App\Http\Controllers\ProductController::class, 'addProduct']);
 Route::get('getAllProduct', [\App\Http\Controllers\ProductController::class, 'getAllProduct']);
