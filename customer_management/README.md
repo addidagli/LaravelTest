@@ -21,44 +21,60 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Kurulum
+- İlk olarak proje açıldığında ".env" dosyasındaki database APP_URL=http://localhost ve 
+ DB_DATABASE= karşısına kendi database'nizi yazmalızısınız. Daha sonra kodu çalıştırıp migrate 
+ ettiğinizde user ve product tabloları databasede oluşacaktır.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Swagger-ui 
+- http://127.0.0.1:8000/api/documentation adresine giderek swagger-ui görebilir ve
+apinin çalışıp çalışmadığını kontrol edebilirsiniz. Swaggerda inputa yazdığınız bazı formatlar(date)
+gibi  yanlış algıladığı için bazı apiler doğru çalışmıyor olabilir. Ancak postman'de denedğinizde 
+doğru çalıştığını göreceksiniz. Bunun için gerekli url'leri aşağıda sıralayacağım.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## EndPoints
+- POST ->  http://127.0.0.1:8000/api/register		
+kullanıcı kaydı için aşağıdaki formatı takip edin
+{
+	"name": "",
+	"email": "",
+	"password": ""
+}
 
-## Laravel Sponsors
+*POST --->  http://127.0.0.1:8000/api/login		
+//kullanıcı ‏girişi için aşağıdaki formatı takip edin 
+{
+	"email": "",
+	"password": ""
+}
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+*POST --->  http://127.0.0.1:8000/api/logout		//çıkış yapar ve token silinir
 
-### Premium Partners
+*GET --->   http://127.0.0.1:8000/api/user		//tüm kullanıcıları gösterir
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+*POST --->  http://127.0.0.1:8000/api/addProduct	
+//product eklemek için aşağıdaki formatı takip edin
+{
+	"orderCode": "",
+	"quantity": 1,
+	"address": "",
+	"shippingDate": "2021-12-12 18:08:05"	//postmande çalışan swaggerda çalışmayan date formatı
+}
 
-## Contributing
+*GET ---> http://127.0.0.1:8000/api/getProductById/?	
+//soru işareti yerine istediğiniz id yazarak product çağırabilirsiniz
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+*GET ---> http://127.0.0.1:8000/api/getAllProduct	//tüm productları getirir
 
-## Code of Conduct
+*GET ---> http://127.0.0.1:8000/api/deleteProduct/?	//soru işareti yerine yazdığınız id'yi siler
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+*PUT ---> http://127.0.0.1:8000/api/updateProduct/?	
+//soru işareti yerine yazdığınız idli product güncellemek için aşağıdaki formatı takip 
+edin shippingDate geçmediyse güncelleme yapmayacaktır
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+{
+	"orderCode": "",
+	"quantity": 1,
+	"address": "",
+	"shippingDate": "2021-12-12 18:08:05"
+}
